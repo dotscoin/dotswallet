@@ -10,40 +10,87 @@ class ScanAndPay extends StatefulWidget {
 }
 
 class _ScanAndPayState extends State<ScanAndPay> {
+  TextEditingController _controller = new TextEditingController();
   var cameraScanResult;
+  bool paymentloading = true;
   scan() async {
-    var temp = await BarcodeScanner.scan();
-    setState(() => {cameraScanResult = temp});
-
-    print(
-        cameraScanResult.type); // The result type (barcode, cancelled, failed)
-    print(cameraScanResult.rawContent); // The barcode content
-    print(cameraScanResult.format); // The barcode format (as enum)
-    print(cameraScanResult
-        .formatNote); // If a unknown format was scanned this field contains a note
-  }
-
-  @override
-  initState() {
-    super.initState();
-    scan();
-    if (cameraScanResult != null) {
-      if (cameraScanResult.type == "Cancelled" ||
-          cameraScanResult.type == "Failed")
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-        );
-    } else {
+    var cameraScanResult = await BarcodeScanner.scan();
+    if (cameraScanResult.rawContent == "") {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );
     }
+    print(cameraScanResult);
+    print(
+        cameraScanResult.type); // The result type (barcode, cancelled, failed)
+    print(cameraScanResult.rawContent); // The barcode content
+    print(cameraScanResult.format); // The barcode format (as enum)
+    print(cameraScanResult.formatNote);
+    // If a unknown format was scanned this field contains a note
+    if (cameraScanResult.rawContent != "") {
+      setState(() {
+        paymentloading = false;
+      });
+    }
+  }
+
+  @override
+  initState() {
+    super.initState();
+    paymentloading = true;
+    scan();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Center(child: Text("Hello")));
+    return Scaffold(
+        appBar: AppBar(backgroundColor: Colors.blue, elevation: 0),
+        body: paymentloading
+            ? Center(child: CircularProgressIndicator())
+            : Container(
+                width: MediaQuery.of(context).size.width,
+                child: Column(children: <Widget>[
+                  SizedBox(height: 50),
+                  Text("Sending To Address",
+                      style: TextStyle(
+                          color: const Color(0xFFFFFFFF),
+                          fontSize: 30,
+                          letterSpacing: 1.2)),
+                  SizedBox(height: 30),
+                  Text("${cameraScanResult.rawContent}",
+                      style: TextStyle(
+                          color: const Color(0xFFFFFFFF),
+                          fontSize: 25,
+                          letterSpacing: 1.2)),
+                  SizedBox(height: 30),
+                  Container(
+                      width: 200,
+                      child: TextField(
+                          controller: _controller,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: "Enter Amount",
+                            border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                          ))),
+                  SizedBox(height: 10),
+                  Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_right),
+                        onPressed: () {},
+                      ))
+                ]),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                )));
   }
 }

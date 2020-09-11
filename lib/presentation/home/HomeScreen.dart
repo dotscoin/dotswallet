@@ -1,4 +1,5 @@
 import 'package:dotswallet/presentation/home/Dashboard.dart';
+import 'package:dotswallet/presentation/profile/Profile.dart';
 import 'package:dotswallet/presentation/scanner/Scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -13,18 +14,31 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: Text("Dotswallet",
               style: TextStyle(color: Colors.blue, letterSpacing: 1.5)),
           backgroundColor: Colors.white,
           actions: [
-            IconButton(
-              onPressed: () => {},
-              icon: Icon(Icons.verified_user),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Profile(),
+                    ));
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    height: 40,
+                    width: 40,
+                    child: CircleAvatar(child: Text("R"))),
+              ),
             )
           ],
           leading: IconButton(
             color: Colors.grey,
-            icon: Icon(Icons.scanner),
+            icon: Icon(Icons.center_focus_weak),
             onPressed: () {
               Navigator.push(
                 context,
@@ -37,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             DashBoard(),
             SlidingUpPanel(
-              minHeight: MediaQuery.of(context).size.height / 3,
+              minHeight: MediaQuery.of(context).size.height / 10,
               maxHeight: MediaQuery.of(context).size.height,
               borderRadius: BorderRadius.all(Radius.circular(20)),
               panel: Column(
