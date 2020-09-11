@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             DashBoard(),
             SlidingUpPanel(
-              minHeight: MediaQuery.of(context).size.height / 10,
+              minHeight: MediaQuery.of(context).size.height / 3,
               maxHeight: MediaQuery.of(context).size.height,
               borderRadius: BorderRadius.all(Radius.circular(20)),
               panel: Column(
@@ -71,7 +71,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     ],
                   ),
-                  Text("hello there")
+                  SizedBox(height: 10),
+                  ListTile(
+                      leading: CircleAvatar(
+                          child: Icon(Icons.arrow_downward),
+                          backgroundColor: Colors.green),
+                      title: Text("asfheaufehfuewrewyfrhefef"),
+                      subtitle: Text("2300.03 DOTS"),
+                      trailing:
+                          FlatButton(child: Text("Pay"), onPressed: () => {})),
+                  ListTile(
+                      leading: CircleAvatar(
+                          child: Icon(Icons.arrow_upward),
+                          backgroundColor: Colors.red),
+                      title: Text("asfheaufehfuewrewyfrhefef"),
+                      subtitle: Text("300.03 DOTS"),
+                      trailing:
+                          FlatButton(child: Text("Pay"), onPressed: () => {})),
                 ],
               ),
             ),
