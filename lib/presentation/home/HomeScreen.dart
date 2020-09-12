@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text("Dotswallet",
+          title: Text("DOTSWALLET",
               style: TextStyle(color: Colors.blue, letterSpacing: 1.5)),
           backgroundColor: Colors.white,
           actions: [
@@ -28,16 +28,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     ));
               },
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(
+                    top: 8, right: 16, bottom: 8, left: 8),
                 child: Container(
-                    height: 40,
-                    width: 40,
+                    height: 30,
+                    width: 30,
                     child: CircleAvatar(child: Text("R"))),
               ),
             )
           ],
           leading: IconButton(
-            color: Colors.grey,
+            color: Colors.black,
             icon: Icon(Icons.center_focus_weak),
             onPressed: () {
               Navigator.push(
