@@ -87,11 +87,11 @@ class _DashBoardState extends State<DashBoard> {
         SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Container(
-            height: 100.0,
-            child: graph_data.length == 0
-                ? CircularProgressIndicator()
-                : Sparkline(
+          child: graph_data.length == 0
+              ? Center(child: CircularProgressIndicator())
+              : Container(
+                  height: 100.0,
+                  child: Sparkline(
                     data: graph_data,
                     fillMode: FillMode.below,
                     fillGradient: new LinearGradient(
@@ -105,7 +105,7 @@ class _DashBoardState extends State<DashBoard> {
                       ],
                     ),
                   ),
-          ),
+                ),
         ),
       ],
     ));

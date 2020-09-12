@@ -1,4 +1,5 @@
 import 'package:dotswallet/presentation/home/HomeScreen.dart';
+import 'package:dotswallet/presentation/intro/introscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: IntroScreen(),
     );
   }
 }
