@@ -33,81 +33,84 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration: BoxDecoration(color: Colors.white),
         child: Column(
-      children: <Widget>[
-        // Container(
-        //   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 18),
-        //   child: Image.network(
-        //       "http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=fefgg&chld=H|0"),
-        // ),
-        SizedBox(height: 50),
-        Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("BALANCE",
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              ),
-              Text("Rs. 8000", style: TextStyle(fontSize: 48))
-            ]),
-        SizedBox(height: 30),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                color: Colors.blue,
-                onPressed: () => {},
-                child: Row(children: [
-                  Icon(Icons.arrow_upward, color: Colors.white),
-                  Text("Send Money", style: TextStyle(color: Colors.white)),
+          children: <Widget>[
+            // Container(
+            //   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 18),
+            //   child: Image.network(
+            //       "http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=fefgg&chld=H|0"),
+            // ),
+            SizedBox(height: 50),
+            Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("BALANCE",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                  ),
+                  Text("Rs. 8000", style: TextStyle(fontSize: 48))
                 ]),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                color: Colors.blue,
-                onPressed: () => {},
-                child: Row(children: [
-                  Icon(Icons.arrow_downward, color: Colors.white),
-                  Text("Receive Money", style: TextStyle(color: Colors.white)),
-                ]),
-              ),
-            )
-          ],
-        ),
-        SizedBox(height: 30),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: graph_data.length == 0
-              ? Center(child: CircularProgressIndicator())
-              : Container(
-                  height: 100.0,
-                  child: Sparkline(
-                    data: graph_data,
-                    fillMode: FillMode.below,
-                    fillGradient: new LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.red[800],
-                        Colors.red[200],
-                        Colors.red[100],
-                        Colors.white
-                      ],
-                    ),
+            SizedBox(height: 30),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RaisedButton(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    color: Colors.blue,
+                    onPressed: () => {},
+                    child: Row(children: [
+                      Icon(Icons.arrow_upward, color: Colors.white),
+                      Text("Send Money", style: TextStyle(color: Colors.white)),
+                    ]),
                   ),
                 ),
-        ),
-      ],
-    ));
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RaisedButton(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    color: Colors.blue,
+                    onPressed: () => {},
+                    child: Row(children: [
+                      Icon(Icons.arrow_downward, color: Colors.white),
+                      Text("Receive Money",
+                          style: TextStyle(color: Colors.white)),
+                    ]),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: graph_data.length == 0
+                  ? Center(child: CircularProgressIndicator())
+                  : Container(
+                      height: 100.0,
+                      child: Sparkline(
+                        data: graph_data,
+                        fillMode: FillMode.below,
+                        fillGradient: new LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.blue[800],
+                            Colors.blue[200],
+                            Colors.blue[100],
+                            Colors.blue[50],
+                            Colors.white
+                          ],
+                        ),
+                      ),
+                    ),
+            ),
+          ],
+        ));
   }
 }

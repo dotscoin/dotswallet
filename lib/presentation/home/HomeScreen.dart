@@ -1,3 +1,4 @@
+import 'package:barcode_scan/barcode_scan.dart';
 import 'package:dotswallet/presentation/home/Dashboard.dart';
 import 'package:dotswallet/presentation/profile/Profile.dart';
 import 'package:dotswallet/presentation/scanner/Scanner.dart';
@@ -10,6 +11,30 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  scan() async {
+    var cameraScanResult = await BarcodeScanner.scan();
+    if (cameraScanResult.rawContent == "") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    }
+    print(cameraScanResult);
+    print(
+        cameraScanResult.type); // The result type (barcode, cancelled, failed)
+    print(cameraScanResult.rawContent); // The barcode content
+    print(cameraScanResult.format); // The barcode format (as enum)
+    print(cameraScanResult.formatNote);
+    // If a unknown format was scanned this field contains a note
+    if (cameraScanResult.rawContent != "") {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  ScanAndPay(address: cameraScanResult.rawContent)));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,32 +44,44 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(color: Colors.blue, letterSpacing: 1.5)),
           backgroundColor: Colors.white,
           actions: [
-            GestureDetector(
-              onTap: () {
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => Profile(),
+            //         ));
+            //   },
+            //   child: Padding(
+            //     padding: const EdgeInsets.only(
+            //         top: 8, right: 16, bottom: 8, left: 8),
+            //     child: Container(
+            //         height: 30,
+            //         width: 30,
+            //         child: CircleAvatar(child: Text("R"))),
+            //   ),
+            // )
+            IconButton(
+              icon: Icon(Icons.settings),
+              color: Colors.black,
+              onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => Profile(),
                     ));
               },
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 8, right: 16, bottom: 8, left: 8),
-                child: Container(
-                    height: 30,
-                    width: 30,
-                    child: CircleAvatar(child: Text("R"))),
-              ),
             )
           ],
           leading: IconButton(
             color: Colors.black,
             icon: Icon(Icons.center_focus_weak),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ScanAndPay()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => ScanAndPay()),
+              // );
+              scan();
             },
           ),
         ),

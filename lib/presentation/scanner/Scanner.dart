@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 
 class ScanAndPay extends StatefulWidget {
-  ScanAndPay({Key key}) : super(key: key);
+  final address;
+  ScanAndPay({Key key, this.address}) : super(key: key);
 
   @override
   _ScanAndPayState createState() => _ScanAndPayState();
@@ -11,6 +12,7 @@ class ScanAndPay extends StatefulWidget {
 
 class _ScanAndPayState extends State<ScanAndPay> {
   TextEditingController _controller = new TextEditingController();
+  String _address;
   var cameraScanResult;
   bool paymentloading = true;
   scan() async {
@@ -39,7 +41,9 @@ class _ScanAndPayState extends State<ScanAndPay> {
   initState() {
     super.initState();
     paymentloading = true;
-    scan();
+    //scan();
+    _address = widget.address;
+    paymentloading = false;
   }
 
   @override
@@ -58,7 +62,7 @@ class _ScanAndPayState extends State<ScanAndPay> {
                           fontSize: 30,
                           letterSpacing: 1.2)),
                   SizedBox(height: 30),
-                  Text("${cameraScanResult.rawContent}",
+                  Text("${_address}",
                       style: TextStyle(
                           color: const Color(0xFFFFFFFF),
                           fontSize: 25,

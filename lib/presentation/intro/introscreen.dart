@@ -1,4 +1,5 @@
 import 'package:dotswallet/presentation/home/HomeScreen.dart';
+import 'package:dotswallet/presentation/intro/showkeygen.dart';
 import 'package:flutter/material.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -92,7 +93,7 @@ class _IntroScreenState extends State<IntroScreen> {
           GestureDetector(
             onTap: () {
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+                  MaterialPageRoute(builder: (context) => ShowKeygenScreen()));
             },
             child: Container(
                 height: 50,
