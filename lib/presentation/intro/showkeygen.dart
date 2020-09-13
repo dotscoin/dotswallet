@@ -1,5 +1,7 @@
 import 'package:dotswallet/presentation/home/HomeScreen.dart';
+import 'package:dotswallet/services/walletgenerate.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ShowKeygenScreen extends StatefulWidget {
   @override
@@ -7,6 +9,11 @@ class ShowKeygenScreen extends StatefulWidget {
 }
 
 class _ShowKeygenScreenState extends State<ShowKeygenScreen> {
+  @override
+  void initState() {
+    //print(obj.sk);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +53,9 @@ class _ShowKeygenScreenState extends State<ShowKeygenScreen> {
               ),
               SizedBox(height: 30),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: const EdgeInsets.only(left: 10.0, right: 5),
                 child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text("Address",
                           style: TextStyle(
@@ -56,6 +63,12 @@ class _ShowKeygenScreenState extends State<ShowKeygenScreen> {
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.2)),
+                      IconButton(
+                        icon: Icon(Icons.content_copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: "hello"));
+                        },
+                      )
                     ]),
               ),
               SizedBox(height: 5),
@@ -77,9 +90,9 @@ class _ShowKeygenScreenState extends State<ShowKeygenScreen> {
               ),
               SizedBox(height: 25),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: const EdgeInsets.only(left: 10.0, right: 5.0),
                 child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text("Signing Key",
                           style: TextStyle(
@@ -87,6 +100,10 @@ class _ShowKeygenScreenState extends State<ShowKeygenScreen> {
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.2)),
+                      IconButton(
+                        icon: Icon(Icons.content_copy),
+                        onPressed: () {},
+                      )
                     ]),
               ),
               SizedBox(height: 5),
@@ -106,9 +123,9 @@ class _ShowKeygenScreenState extends State<ShowKeygenScreen> {
               ),
               SizedBox(height: 25),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: const EdgeInsets.only(left: 10.0, right: 5.0),
                 child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text("Verifying Key",
                           style: TextStyle(
@@ -116,6 +133,10 @@ class _ShowKeygenScreenState extends State<ShowKeygenScreen> {
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.2)),
+                      IconButton(
+                        icon: Icon(Icons.content_copy),
+                        onPressed: () {},
+                      )
                     ]),
               ),
               SizedBox(height: 5),

@@ -1,9 +1,14 @@
+import 'package:cryptography/cryptography.dart';
+
 class GenerateWallet {
-  final String address;
-  final String vk;
-  final String sk;
+  var address;
+  var vk;
+  var sk;
 
   GenerateWallet({this.address, this.vk, this.sk});
 
-  static generate() {}
+  static GenerateWallet generate() {
+    var sk = ecdsaP256Sha256.newKeyPair();
+    return GenerateWallet(sk: sk);
+  }
 }

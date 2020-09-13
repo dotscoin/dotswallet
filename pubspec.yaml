@@ -27,6 +27,7 @@ dependencies:
   barcode_scan: ^3.0.1
   flutter_sparkline: ^0.1.0
   dio: ^3.0.10
+  cryptography: ^1.4.0
 
 
   # The following adds the Cupertino Icons font to your application.
