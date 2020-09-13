@@ -53,7 +53,13 @@ class _DashBoardState extends State<DashBoard> {
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
-                  Text("Rs. 8000", style: TextStyle(fontSize: 48))
+                  Text(
+                    "0 TRU",
+                    style: TextStyle(
+                      fontSize: 48,
+                    ),
+                    textAlign: TextAlign.center,
+                  )
                 ]),
             SizedBox(height: 30),
             Row(

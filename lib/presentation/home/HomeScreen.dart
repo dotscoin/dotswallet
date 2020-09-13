@@ -40,27 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text("DOTSWALLET",
+          title: Text("TRUWALLET",
               style: TextStyle(color: Colors.blue, letterSpacing: 1.5)),
           backgroundColor: Colors.white,
           actions: [
-            // GestureDetector(
-            //   onTap: () {
-            //     Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //           builder: (context) => Profile(),
-            //         ));
-            //   },
-            //   child: Padding(
-            //     padding: const EdgeInsets.only(
-            //         top: 8, right: 16, bottom: 8, left: 8),
-            //     child: Container(
-            //         height: 30,
-            //         width: 30,
-            //         child: CircleAvatar(child: Text("R"))),
-            //   ),
-            // )
             IconButton(
               icon: Icon(Icons.settings),
               color: Colors.black,
@@ -77,10 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Colors.black,
             icon: Icon(Icons.center_focus_weak),
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ScanAndPay()),
-              // );
               scan();
             },
           ),
