@@ -1,4 +1,5 @@
 import 'package:dotswallet/presentation/home/HomeScreen.dart';
+import 'package:dotswallet/presentation/intro/existingwallet.dart';
 import 'package:dotswallet/presentation/intro/showkeygen.dart';
 import 'package:flutter/material.dart';
 
@@ -108,6 +109,10 @@ class _IntroScreenState extends State<IntroScreen> {
           ),
           SizedBox(height: 25),
           GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => ExistingWallet()));
+              },
               child: Center(
                   child: Text("I Already Have a Wallet",
                       style: TextStyle(

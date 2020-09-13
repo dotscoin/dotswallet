@@ -1,3 +1,4 @@
+import 'package:dotswallet/presentation/transaction/Receive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:dio/dio.dart';
@@ -76,7 +77,12 @@ class _DashBoardState extends State<DashBoard> {
                   child: RaisedButton(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                     color: Colors.blue,
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ReceiveMoney()))
+                    },
                     child: Row(children: [
                       Icon(Icons.arrow_downward, color: Colors.white),
                       Text("Receive Money",

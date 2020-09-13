@@ -50,51 +50,53 @@ class _ScanAndPayState extends State<ScanAndPay> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(backgroundColor: Colors.blue, elevation: 0),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.white,
+          child: Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.black,
+          ),
+        ),
         body: paymentloading
             ? Center(child: CircularProgressIndicator())
-            : Container(
-                width: MediaQuery.of(context).size.width,
-                child: Column(children: <Widget>[
-                  SizedBox(height: 50),
-                  Text("Sending To Address",
-                      style: TextStyle(
-                          color: const Color(0xFFFFFFFF),
-                          fontSize: 30,
-                          letterSpacing: 1.2)),
-                  SizedBox(height: 30),
-                  Text("${_address}",
-                      style: TextStyle(
-                          color: const Color(0xFFFFFFFF),
-                          fontSize: 25,
-                          letterSpacing: 1.2)),
-                  SizedBox(height: 30),
-                  Container(
-                      width: 200,
-                      child: TextField(
-                          controller: _controller,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            hintText: "Enter Amount",
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                          ))),
-                  SizedBox(height: 10),
-                  Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: IconButton(
-                        icon: Icon(Icons.arrow_right),
-                        onPressed: () {},
-                      ))
-                ]),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                )));
+            : Center(
+                child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 100),
+                      child: Column(children: <Widget>[
+                        SizedBox(height: 50),
+                        Text("Sending To Address",
+                            style: TextStyle(
+                                color: const Color(0xFFFFFFFF),
+                                fontSize: 35,
+                                letterSpacing: 1.2)),
+                        SizedBox(height: 30),
+                        Text("${_address}",
+                            style: TextStyle(
+                                color: const Color(0xFFFFFFFF),
+                                fontSize: 25,
+                                letterSpacing: 1.2)),
+                        SizedBox(height: 30),
+                        Container(
+                            width: 200,
+                            child: TextField(
+                                controller: _controller,
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  hintText: "Enter Amount",
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                ))),
+                        SizedBox(height: 10),
+                      ]),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    )),
+              ));
   }
 }
